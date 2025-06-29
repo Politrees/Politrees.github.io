@@ -1,20 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pol-Litrees</title>
     <style>
-        body { font-family: Arial; text-align: center; }
-        .links { margin: 30px; }
-        a { margin: 10px; display: block; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .construction {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(255, 152, 0, 0.2);
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            min-width: 220px;
+        }
+
+        .link-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .link-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .link-card span {
+            color: #4fc3f7;
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+
+        .link-card:hover span {
+            color: #81d4fa;
+            text-decoration: underline;
+        }
+
+        .counter {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: #ccc;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .links-grid {
+                gap: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .link-card {
+                width: 100%;
+                max-width: 300px;
+                padding: 25px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Привет! 👋</h1>
-    <p>Сайт в разработке...</p>
-    
-    <div class="links">
-        <a href="https://www.youtube.com/@Politrees?sub_confirmation=1">YouTube-Канал</a>
-        <a href="https://t.me/politrees">Telegram-Канал</a>
+    <div class="container">
+        <div class="construction">
+            <p>⛑️ Сайт в разработке... Загляните позже!</p>
+        </div>
+
+        <div class="links-grid">
+            <a href="https://www.youtube.com/@Politrees?sub_confirmation=1" 
+               class="link-card" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="YouTube канал Politrees">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="YouTube">
+                <span>YouTube-Канал</span>
+            </a>
+
+            <a href="https://t.me/politrees" 
+               class="link-card" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Telegram канал Politrees">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111644.png" alt="Telegram">
+                <span>Telegram-Канал</span>
+            </a>
+        </div>
+
+        <div class="counter">
+            <p>🛠️ Последнее обновление: 30.06.2025</p>
+        </div>
     </div>
 </body>
 </html>
