@@ -13,13 +13,35 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
             color: #fff;
             min-height: 100vh;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Анимированный фон */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                #1a2a6c, #b21f1f, #1a2a6c,
+                #b21f1f, #1a2a6c, #b21f1f);
+            background-size: 400% 400%;
+            animation: gradientBG 250s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
@@ -40,6 +62,13 @@
             border-radius: 10px;
             border-left: 4px solid #ff9800;
             text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
         }
 
         .links-grid {
@@ -61,6 +90,28 @@
             align-items: center;
             text-decoration: none;
             min-width: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
         }
 
         .link-card:hover {
@@ -74,6 +125,7 @@
             height: 80px;
             margin-bottom: 15px;
             transition: transform 0.3s;
+            z-index: 2;
         }
 
         .link-card:hover img {
@@ -85,6 +137,7 @@
             font-weight: 600;
             font-size: 1.3rem;
             text-decoration: none;
+            z-index: 2;
         }
 
         .link-card:hover span {
@@ -98,6 +151,12 @@
             font-size: 0.9rem;
             opacity: 0.8;
             color: #ccc;
+            animation: fadeIn 3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.8; }
         }
 
         /* Адаптивность */
@@ -121,6 +180,8 @@
     </style>
 </head>
 <body>
+    <div class="animated-bg"></div>
+    
     <div class="container">
         <div class="construction">
             <p>⛑️ Сайт в разработке... Загляните позже!</p>
