@@ -11,6 +11,18 @@
             box-sizing: border-box;
         }
 
+        /* Скрытие полосы прокрутки */
+        html {
+            overflow: scroll;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 10+ */
+        }
+        html::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            background: transparent; /* Chrome/Safari/Webkit */
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #fff;
@@ -20,13 +32,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
         /* Анимированный фон */
         .animated-bg {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -51,6 +63,7 @@
             margin-bottom: 30px;
             position: relative;
             z-index: 1;
+            padding: 0 15px;
         }
 
         .site-title {
@@ -96,6 +109,9 @@
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
         }
 
         .construction {
@@ -119,6 +135,7 @@
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
         .link-card {
@@ -189,12 +206,13 @@
         }
 
         .counter {
-            margin-top: 30px;
             text-align: center;
             font-size: 0.9rem;
             opacity: 0.8;
             color: #ccc;
             animation: fadeIn 3s;
+            padding: 0 15px;
+            margin-top: auto;
         }
 
         @keyframes fadeIn {
@@ -211,22 +229,33 @@
             .site-subtitle {
                 font-size: 0.9rem;
             }
+            
+            body {
+                padding: 15px;
+                justify-content: flex-start;
+            }
+            
+            .container {
+                padding: 25px 20px;
+            }
         }
 
         @media (max-width: 600px) {
             .container {
                 padding: 20px 15px;
+                border-radius: 15px;
             }
             
             .links-grid {
                 gap: 20px;
                 flex-direction: column;
                 align-items: center;
+                margin-bottom: 15px;
             }
             
             .link-card {
                 width: 100%;
-                max-width: 300px;
+                max-width: 100%;
                 padding: 25px;
             }
             
@@ -236,6 +265,35 @@
             
             .site-subtitle {
                 font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+            
+            .construction {
+                padding: 12px;
+                margin-bottom: 20px;
+            }
+            
+            .construction p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .link-card img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .link-card span {
+                font-size: 1.1rem;
+            }
+            
+            .counter {
+                padding-top: 10px;
             }
         }
     </style>
@@ -256,7 +314,7 @@
         </div>
 
         <div class="links-grid">
-	<!-- Ссылка на YouTube канал Politrees -->
+            <!-- Ссылка на YouTube канал Politrees -->
             <a href="https://www.youtube.com/@Politrees?sub_confirmation=1" 
                class="link-card" 
                target="_blank" 
@@ -266,7 +324,7 @@
                 <span>YouTube-Канал</span>
             </a>
 
-	<!-- Ссылка на Telegram канал Politrees -->
+            <!-- Ссылка на Telegram канал Politrees -->
             <a href="https://t.me/politrees" 
                class="link-card" 
                target="_blank" 
@@ -277,7 +335,7 @@
             </a>
         </div>
 
-	<!-- Дата последнего изменения на сайте -->
+        <!-- Дата последнего изменения на сайте -->
         <div class="counter">
             <p>🛠️ Последнее обновление: 30.06.2025</p>
         </div>
