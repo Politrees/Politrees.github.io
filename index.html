@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <title>Pol-Litrees</title>
     <style>
+        /* CSS Переменные для легкой настройки дизайна */
+        :root {
+            --bg-grad-1: #1a2a6c;
+            --bg-grad-2: #b21f1f;
+            --primary-color: #4fc3f7;
+            --primary-color-light: #81d4fa;
+            --primary-color-lighter: #b3e5fc;
+            --text-color: #fff;
+            --text-color-muted: rgba(255, 255, 255, 0.8);
+            --container-bg: rgba(0, 0, 0, 0.7);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-bg-hover: rgba(255, 255, 255, 0.2);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --warning-bg: rgba(255, 152, 0, 0.2);
+            --warning-border: #ff9800;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -25,7 +45,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #fff;
+            color: var(--text-color);
             min-height: 100vh;
             padding: 20px;
             display: flex;
@@ -44,8 +64,8 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, 
-                #1a2a6c, #b21f1f, #1a2a6c,
-                #b21f1f, #1a2a6c, #b21f1f);
+                var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-1),
+                var(--bg-grad-2), var(--bg-grad-1), var(--bg-grad-2));
             background-size: 400% 400%;
             animation: gradientBG 250s linear infinite;
             z-index: -1;
@@ -69,7 +89,7 @@
         .site-title {
             font-size: 3.5rem;
             font-weight: 700;
-            background: linear-gradient(to right, #4fc3f7, #81d4fa, #b3e5fc);
+            background: linear-gradient(to right, var(--primary-color), var(--primary-color-light), var(--primary-color-lighter));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -86,7 +106,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(to right, transparent, #4fc3f7, transparent);
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
             border-radius: 50%;
             opacity: 0.8;
         }
@@ -94,7 +114,7 @@
         .site-subtitle {
             margin-top: 8px;
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-color-muted);
             font-weight: 300;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -103,12 +123,12 @@
         .container {
             max-width: 800px;
             width: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: var(--container-bg);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             margin-bottom: 30px;
             display: flex;
             flex-direction: column;
@@ -117,9 +137,9 @@
         .construction {
             margin-bottom: 30px;
             padding: 15px;
-            background: rgba(255, 152, 0, 0.2);
+            background: var(--warning-bg);
             border-radius: 10px;
-            border-left: 4px solid #ff9800;
+            border-left: 4px solid var(--warning-border);
             text-align: center;
             animation: pulse 2s infinite;
         }
@@ -139,11 +159,11 @@
         }
 
         .link-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--card-bg);
             border-radius: 12px;
             padding: 30px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--border-color);
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -161,23 +181,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.1),
-                transparent
-            );
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transition: 0.5s;
-        }
-
-        .link-card:hover::before {
-            left: 100%;
-        }
-
-        .link-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .link-card img {
@@ -188,21 +193,37 @@
             z-index: 2;
         }
 
-        .link-card:hover img {
-            transform: scale(1.1);
-        }
-
         .link-card span {
-            color: #4fc3f7;
+            color: var(--primary-color);
             font-weight: 600;
             font-size: 1.3rem;
             text-decoration: none;
             z-index: 2;
+            transition: color 0.3s ease;
         }
 
-        .link-card:hover span {
-            color: #81d4fa;
-            text-decoration: underline;
+        /* Применяем эффекты наведения ТОЛЬКО на устройствах с мышью */
+        @media (hover: hover) {
+            .link-card:hover::before { left: 100%; }
+
+            .link-card:hover {
+                transform: translateY(-8px);
+                background: var(--card-bg-hover);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .link-card:hover img { transform: scale(1.1); }
+
+            .link-card:hover span {
+                color: var(--primary-color-light);
+                text-decoration: underline;
+            }
+        }
+
+        /* Дополнительный эффект для момента нажатия */
+        .link-card:active {
+            transform: translateY(-2px) scale(0.98); /* Легкий "утопленный" эффект */
+            transition: transform 0.1s ease; /* Быстрая анимация для нажатия */
         }
 
         .counter {
@@ -222,123 +243,67 @@
 
         /* Адаптивность */
         @media (max-width: 768px) {
-            .site-title {
-                font-size: 2.8rem;
-            }
-            
-            .site-subtitle {
-                font-size: 0.9rem;
-            }
-            
-            body {
-                padding: 15px;
-                justify-content: flex-start;
-            }
-            
-            .container {
-                padding: 25px 20px;
-            }
+            .site-title { font-size: 2.8rem; }
+            .site-subtitle { font-size: 0.9rem; }
+            body { padding: 15px; justify-content: flex-start; }
+            .container { padding: 25px 20px; }
         }
 
         @media (max-width: 600px) {
-            .container {
-                padding: 20px 15px;
-                border-radius: 15px;
-            }
-            
-            .links-grid {
-                gap: 20px;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 15px;
-            }
-            
-            .link-card {
-                width: 100%;
-                max-width: 100%;
-                padding: 25px;
-            }
-            
-            .site-title {
-                font-size: 2.2rem;
-            }
-            
-            .site-subtitle {
-                font-size: 0.8rem;
-                letter-spacing: 1px;
-            }
-            
-            .construction {
-                padding: 12px;
-                margin-bottom: 20px;
-            }
-            
-            .construction p {
-                font-size: 0.9rem;
-            }
+            .container { padding: 20px 15px; border-radius: 15px; }
+            .links-grid { gap: 20px; flex-direction: column; align-items: center; margin-bottom: 15px; }
+            .link-card { width: 100%; max-width: 100%; padding: 25px; }
+            .site-title { font-size: 2.2rem; }
+            .site-subtitle { font-size: 0.8rem; letter-spacing: 1px; }
+            .construction { padding: 12px; margin-bottom: 20px; }
+            .construction p { font-size: 0.9rem; }
         }
         
         @media (max-width: 480px) {
-            .site-title {
-                font-size: 1.8rem;
-            }
-            
-            .link-card img {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .link-card span {
-                font-size: 1.1rem;
-            }
-            
-            .counter {
-                padding-top: 10px;
-            }
+            .site-title { font-size: 1.8rem; }
+            .link-card img { width: 60px; height: 60px; }
+            .link-card span { font-size: 1.1rem; }
+            .counter { padding-top: 10px; }
         }
     </style>
 </head>
 <body>
     <div class="animated-bg"></div>
     
-    <!-- Заголовок сайта -->
-    <div class="site-header">
+    <header class="site-header">
         <h1 class="site-title">Pol-Litrees</h1>
-        <div class="site-subtitle">Всё о проектах Politrees</div>
-    </div>
+        <p class="site-subtitle">Всё о проектах Politrees</p>
+    </header>
     
-    <!-- Основной контейнер сайта -->
-    <div class="container">
+    <main class="container">
         <div class="construction">
             <p>⛑️ Сайт в разработке... Загляните позже!</p>
         </div>
 
         <div class="links-grid">
-            <!-- Ссылка на YouTube канал Politrees -->
             <a href="https://www.youtube.com/@Politrees?sub_confirmation=1" 
                class="link-card" 
                target="_blank" 
                rel="noopener noreferrer"
                aria-label="YouTube канал Politrees">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="YouTube">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="Иконка YouTube">
                 <span>YouTube-Канал</span>
             </a>
 
-            <!-- Ссылка на Telegram канал Politrees -->
             <a href="https://t.me/politrees" 
                class="link-card" 
                target="_blank" 
                rel="noopener noreferrer"
                aria-label="Telegram канал Politrees">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111644.png" alt="Telegram">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111644.png" alt="Иконка Telegram">
                 <span>Telegram-Канал</span>
             </a>
         </div>
+    </main>
 
-        <!-- Дата последнего изменения на сайте -->
-        <div class="counter">
-            <p>🛠️ Последнее обновление: 30.06.2025</p>
-        </div>
-    </div>
+    <footer class="counter">
+        <p>🛠️ Последнее обновление: 30.06.2025</p>
+    </footer>
+
 </body>
 </html>
