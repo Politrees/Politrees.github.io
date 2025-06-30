@@ -17,6 +17,7 @@
             min-height: 100vh;
             padding: 20px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
@@ -42,6 +43,48 @@
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+
+        /* Заголовок сайта */
+        .site-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .site-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #4fc3f7, #81d4fa, #b3e5fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .site-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #4fc3f7, transparent);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .site-subtitle {
+            margin-top: 8px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .container {
@@ -160,6 +203,16 @@
         }
 
         /* Адаптивность */
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 2.8rem;
+            }
+            
+            .site-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 20px 15px;
@@ -176,18 +229,34 @@
                 max-width: 300px;
                 padding: 25px;
             }
+            
+            .site-title {
+                font-size: 2.2rem;
+            }
+            
+            .site-subtitle {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="animated-bg"></div>
     
+    <!-- Заголовок сайта -->
+    <div class="site-header">
+        <h1 class="site-title">Pol-Litrees</h1>
+        <div class="site-subtitle">Всё о проектах Politrees</div>
+    </div>
+    
+    <!-- Основной контейнер сайта -->
     <div class="container">
         <div class="construction">
             <p>⛑️ Сайт в разработке... Загляните позже!</p>
         </div>
 
         <div class="links-grid">
+			<!-- Ссылка на YouTube канал Politrees -->
             <a href="https://www.youtube.com/@Politrees?sub_confirmation=1" 
                class="link-card" 
                target="_blank" 
@@ -197,6 +266,7 @@
                 <span>YouTube-Канал</span>
             </a>
 
+			<!-- Ссылка на Telegram канал Politrees -->
             <a href="https://t.me/politrees" 
                class="link-card" 
                target="_blank" 
@@ -207,6 +277,7 @@
             </a>
         </div>
 
+		<!-- Дата последнего изменения на сайте -->
         <div class="counter">
             <p>🛠️ Последнее обновление: 30.06.2025</p>
         </div>
