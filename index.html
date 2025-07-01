@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="icon" type="image/png" href="favicon.png">
-    
     <title>Pol-Litrees</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <meta name="description" content="Официальная страница-визитка проектов Politrees. Ссылки на YouTube, Telegram и другие ресурсы.">
+    
+    <meta property="og:title" content="Pol-Litrees | Всё о проектах Politrees">
+    <meta property="og:description" content="Официальная страница-визитка проектов Politrees.">
+    <meta property="og:image" content="https://your-site.com/preview.png">
+    <meta property="og:url" content="https://politrees.github.io/">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+
     <style>
         /* CSS Переменные для легкой настройки дизайна */
         :root {
@@ -63,7 +73,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, 
+            background: linear-gradient(135deg,  
                 var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-1),
                 var(--bg-grad-2), var(--bg-grad-1), var(--bg-grad-2));
             background-size: 400% 400%;
@@ -132,6 +142,21 @@
             margin-bottom: 30px;
             display: flex;
             flex-direction: column;
+            /* ✨ Новая анимация появления */
+            opacity: 0;
+            animation: fadeInContainer 1s 0.2s ease-in-out forwards;
+        }
+        
+        /* ✨ Анимация для контейнера */
+        @keyframes fadeInContainer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .construction {
@@ -202,7 +227,7 @@
             transition: color 0.3s ease;
         }
 
-        /* Применяем эффекты наведения ТОЛЬКО на устройствах с мышью */
+        /* Эффекты наведения ТОЛЬКО на устройствах с мышью */
         @media (hover: hover) {
             .link-card:hover::before { left: 100%; }
 
@@ -220,10 +245,9 @@
             }
         }
 
-        /* Дополнительный эффект для момента нажатия */
         .link-card:active {
-            transform: translateY(-2px) scale(0.98); /* Легкий "утопленный" эффект */
-            transition: transform 0.1s ease; /* Быстрая анимация для нажатия */
+            transform: translateY(-2px) scale(0.98);
+            transition: transform 0.1s ease;
         }
 
         .counter {
@@ -286,7 +310,7 @@
                target="_blank" 
                rel="noopener noreferrer"
                aria-label="YouTube канал Politrees">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="Иконка YouTube">
+                <img src="icon/youtube_icon.svg" alt="Иконка YouTube">
                 <span>YouTube-Канал</span>
             </a>
 
@@ -295,7 +319,7 @@
                target="_blank" 
                rel="noopener noreferrer"
                aria-label="Telegram канал Politrees">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111644.png" alt="Иконка Telegram">
+               <img src="icon/telegram_icon.svg" alt="Иконка Telegram">
                 <span>Telegram-Канал</span>
             </a>
         </div>
